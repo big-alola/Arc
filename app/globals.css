@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #080f0a;
+  --surface: #0d1a10;
+  --surface2: #122018;
+  --border: #1e3528;
+  --border2: #2a4a38;
+  --accent: #25a461;
+  --accent2: #48c07d;
+  --accent-glow: rgba(37, 164, 97, 0.15);
+  --text: #e8f5ee;
+  --text2: #8aad99;
+  --text3: #4d7a60;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+}
+
+.font-display { font-family: 'Syne', sans-serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+/* Glow effects */
+.glow-green { box-shadow: 0 0 30px var(--accent-glow), 0 0 60px rgba(37,164,97,0.08); }
+.glow-text { text-shadow: 0 0 20px rgba(37,164,97,0.5); }
+
+/* Animated grid background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(37,164,97,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,164,97,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Status badge pulse */
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.status-pulse { animation: statusPulse 2s ease-in-out infinite; }
+
+/* Slide in */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.slide-in { animation: slideIn 0.4s ease-out forwards; }
+
+/* Shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, var(--surface) 25%, var(--surface2) 50%, var(--surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Number ticker */
+@keyframes ticker {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ticker { animation: ticker 0.3s ease-out; }
